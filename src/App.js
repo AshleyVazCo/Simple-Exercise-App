@@ -1,8 +1,8 @@
 import './App.css'
+import {useCallback, useState } from 'react'
 import RepetitionExercise from "./components/RepetitionExercise"
 import DurationExercise from "./components/DurationExercise"
 import RunningExercise from "./components/RunningExercise"
-import {useCallback, useState } from 'react'
 
 const menuScreen = "menu"
 const exerciseScreen = "exercise"
@@ -17,9 +17,10 @@ let exerciseList = [
 ]
 
 function App() {
-  let [currentScreen, setCurrentScreen] = useState({})
-  let [currentExercise, setCurrentExercise] = useState("")
+  let [currentScreen, setCurrentScreen] = useState({menuScreen})
+  let [currentExercise, setCurrentExercise] = useState({})
   let screenComponent = undefined
+  // eslint-disable-next-line
   let buttonClick = useCallback((exercise) => {
     setCurrentExercise(exercise)
     setCurrentScreen(exerciseScreen)
