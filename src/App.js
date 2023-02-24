@@ -1,43 +1,71 @@
 import './App.css'
 import RepetitionExercise from "./components/RepetitionExercise"
 import DurationExercise from "./components/DurationExercise"
+import RunningExercise from "./components/RunningExercise"
+import {useCallback, useState } from 'react'
+
+const menuScreen = "menu"
+const exerciseScreen = "exercise"
+const Duration_Exercise = "duration"
+const Repetition_Exercise = "repetition"
+const Running_Exercise = "running"
+
+let exerciseList = [
+  {type: Repetition_Exercise, name: "Push ups"},
+  {type: Duration_Exercise, name: "Bicycling"},
+  {type: Running_Exercise, name: "Running"}
+]
 
 function App() {
-  let exerciseData = [
-    {
-      exerciseName: "Exercises",
-      exerciseItems: [
-        {
-        exerciseZero: "Biking",
-        exerciseOne: "Running",
-        exerciseTwo: "Push-ups",
-        exerciseThree: "Crunches"
-        }
-      ],
-      exerciseButtonsRep: [
-        {
-          repButton: "Rep Count",
-          repReset: "Reset",
-        }
-      ],
-      exerciseButtonDu: [
-        {
-          duButton: "Start",
-          duReset: "Reset",
-        }
-      ]
+  let [currentScreen, setCurrentScreen] = useState({})
+  let [currentExercise, setCurrentExercise] = useState("")
+  let screenComponent = undefined
+  let buttonClick = useCallback((exercise) => {
+    setCurrentExercise(exercise)
+    setCurrentScreen(exerciseScreen)
+  })
+
+  if(currentScreen === menuScreen) {
+    screenComponent = <div>
+      <p>Exercise Menu</p>
+      <ul>
+        {exerciseList.map((exercise)=> {
+          return <li key={exercise.name}>
+            <button onClick={() => buttonClick(exercise)}>{exercise.name}</button>
+            </li>
+  })}
+      </ul>
+   </div>
+  } else if(currentScreen === exerciseScreen) {
+    switch(currentExercise.type) {
+      case Repetition_Exercise:
+        screenComponent = <RepetitionExercise
+        exercise={currentExercise}
+        setMenuScreen={()=>setCurrentScreen(menuScreen)}/>
+      break;
+
+      case Duration_Exercise:
+        screenComponent = <DurationExercise 
+        exercise={currentExercise}
+        setMenuScreen={()=>setCurrentScreen(menuScreen)}/>
+      break;
+
+      case Running_Exercise:
+        screenComponent = <RunningExercise 
+        exercise={currentExercise}
+        setMenuScreen={()=>setCurrentScreen(menuScreen)}/>
+      break;
+      default:
+        screenComponent = undefined
     }
-  ]
+
+  }
 
   return (
     <div className="App">
-      <h1>Exercises</h1>
-      <button>{this.props.exerciseZero}Biking</button>
-      <button>{this.props.exerciseOne}Running</button>
-      <button>{this.props.exerciseTwo}Push-ups</button>
-      <button>{this.props.exerciseThree}Crunches</button>
-    <RepetitionExercise data={exerciseData}></RepetitionExercise>
-    <DurationExercise data={exerciseData}></DurationExercise>
+      <header className="App-header">
+      <p>{screenComponent}</p>
+      </header>
     </div>
   )
 }

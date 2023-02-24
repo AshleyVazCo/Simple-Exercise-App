@@ -1,15 +1,11 @@
-import React from "react"
-export default class RepetitionExercise extends React.Component {
-    render() {
-
-        return (
-            <>
-            <div>
-            <h1>{this.props.exerciseTwo}</h1>
-           <button>{this.props.repButton}</button>
-           <button>{this.props.repReset}</button>
-            </div>
-            </>
-        )
-    }
-}
+// need to create a repetition (like a counter) component and the import it here
+export default function repetitionExercise ({exercise, setMenuScreen}) {
+    let {name} = exercise
+    return <div>
+      <p>{name}</p>
+      <button>Rep Count</button>
+      <button>Reset</button>
+      <button onClick={setMenuScreen}>Back to Menu</button>
+    </div>
+  
+  }
