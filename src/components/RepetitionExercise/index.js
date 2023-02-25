@@ -6,7 +6,7 @@ export default function repetitionExercise ({exercise, setMenuScreen}) {
     return <div>
       <p>{name}</p>
       <button onClick={()=>counter(counter+1)}>Rep Count</button>
-      <button>Reset</button>
+      <button onClick={()=>counter(0)}>Reset</button>
       <button onClick={setMenuScreen}>Back to Menu</button>
     </div>
   

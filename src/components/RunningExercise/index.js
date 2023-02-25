@@ -7,6 +7,8 @@ export default function runningExercise ({exercise, setMenuScreen}) {
     return <div>
       <p>{name}</p>
       {/* <Stopwatch/> */}
+      <button>Start</button>
+      <button>Reset</button>
       <button onClick={setMenuScreen}>Back to Menu</button>
     </div>
   

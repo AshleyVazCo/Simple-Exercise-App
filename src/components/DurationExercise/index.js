@@ -1,9 +1,11 @@
-// need to create a stopwatch component and the import it here
+import Stopwatch from ".Stopwatch"
+
 export default function durationExercise({exercise, setMenuScreen}) {
     let {name} = exercise
+     
     return <div>
       <p>{name}</p>
-      {/* <Stopwatch/> */}
+      <Stopwatch/>
       <button onClick={setMenuScreen}>Back to Menu</button>
       </div>
   }
