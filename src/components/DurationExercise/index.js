@@ -1,11 +1,10 @@
-import Stopwatch from "./Stopwatch"
-
+import StopWatch from "../Stopwatch/stopwatch"
 export default function durationExercise({exercise, setMenuScreen}) {
     let {name} = exercise
      
     return <div>
       <p>{name}</p>
-      <Stopwatch/>
+      <StopWatch/>
       <button onClick={setMenuScreen}>Back to Menu</button>
       </div>
   }
