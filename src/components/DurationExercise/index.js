@@ -1,7 +1,7 @@
-import StopWatch from "../Stopwatch/stopwatch"
+import StopWatch from "../StopWatch/StopWatch"
 export default function durationExercise({exercise, setMenuScreen}) {
     let {name} = exercise
-     
+    
     return <div>
       <p>{name}</p>
       <StopWatch/>

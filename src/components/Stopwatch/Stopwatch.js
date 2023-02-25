@@ -10,15 +10,19 @@ export default function StopWatch() {
         if(running) {
             setTimer((timer) => timer+10)
         }
+        // eslint-disable-next-line
     },[running])
     useEffect(() => {
         currentTimer = setInterval(updateTimer, 10)
         return () => clearInterval(currentTimer)
+        // eslint-disable-next-line
     }, [running])
     let startStop = useCallback(() => {
         setRunning(!running)
         clearInterval(currentTimer)
+        // eslint-disable-next-line
     },[running])
+    // eslint-disable-next-line
     let reset = useCallback(() => {
         setTimer(0)
     })
