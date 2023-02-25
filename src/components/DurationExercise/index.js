@@ -1,4 +1,4 @@
-import Stopwatch from ".Stopwatch"
+import Stopwatch from "./Stopwatch"
 
 export default function durationExercise({exercise, setMenuScreen}) {
     let {name} = exercise
