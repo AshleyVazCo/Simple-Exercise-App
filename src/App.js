@@ -65,10 +65,10 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-      <p>{screenComponent}</p>
+      {screenComponent}
       </header>
     </div>
-  )
+  );
 }
 
 export default App
